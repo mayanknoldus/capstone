@@ -1,0 +1,37 @@
+{
+  "name": "backend-example",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Example for backend with a mysql database, simple front-end, and a Node server",
+  "license": "MIT",
+  "keywords": [
+    "mysql",
+    "node"
+  ],
+  "repository": "https://github.com/wooorm/backend-example",
+  "bugs": "https://github.com/wooorm/backend-example/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.2",
+    "express": "^4.15.2",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "run-series": "^1.1.4",
+    "xo": "^0.18.0"
+  },
+  "scripts": {
+    "start": "node server",
+    "lint": "xo"
+  },
+  "xo": {
+    "space": true,
+    "esnext": false
+  }
+}
