@@ -1,0 +1,10 @@
+---
+- name: Assignment
+  hosts: all
+  become: yes
+  tags: jenkins
+  roles:
+    - jenkins 
+  
+
+  

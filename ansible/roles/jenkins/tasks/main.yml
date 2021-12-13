@@ -1,0 +1,7 @@
+---
+# tasks file for role/jenkins
+- import_tasks: java.yml
+
+- import_tasks: Install-jenkins.yml
+
+- import_tasks: start-jenkins.yml
