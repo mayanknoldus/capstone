@@ -73,10 +73,11 @@ pipeline {
             }
             steps {
             	script {
-            		
+            		kubernetesDeploy configs: '**/k8s-deployment.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
             	}
             }
         }
 
     }   
 }
+
