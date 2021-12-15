@@ -1,42 +1,80 @@
 pipeline {
 
-    agent {
-        node {
-            label ''
-        }
+    agent any 
+    environment{
+    	dockerImage = ''
+    	registry = 'mayanknoldus/capstone:${GIT_COMMIT}-${BUILD_NUMBER}'
+    	registryCredentials = 'dockerhub_cred'
+    }
+    tools{
+    	maven 'maven'
     }
 
     stages {
         
         stage('Cleanup Workspace') {
             steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace For Project"
-                """
+                sh "mvn clean"
             }
         }
-
-        stage(' Unit Testing') {
+        
+        stage('Compile code') {
             steps {
-                sh """
-                echo "Running Unit Tests"
-                """
-            }
+                sh 'mvn compile'
+            }	
         }
 
-        stage('Build Deploy Code') {
+        stage('Testing') {
             when {
-                branch 'develop'
+                branch 'test'
+            } 
+            steps {
+                sh "mvn test"
+            }
+        }
+        
+        stage('Packaging') {
+            when {
+                branch 'main'
+            } 
+            steps {
+                sh "mvn package"
+            }
+        }
+        
+        stage('Build and Push') {
+            when {
+                branch 'main'
+            } 
+            stages {
+                stage('Building Docker Image') {
+                	steps {
+                		script {
+                			dockerImage=docker.build registry
+                		}
+                	}
+                }
+                
+                stage('Pushing image to Docker Hub') {
+                	steps {
+                		script {
+                			docker.withRegistry( '', registryCredentials) {
+                				dockerImage.push()	
+                			}
+                		}
+                	}
+                }
+            }
+        }
+
+        stage(' Deploy to K8s') {
+            when {
+                branch 'main'
             }
             steps {
-                sh """
-                echo "Building Artifact"
-                """
-
-                sh """
-                echo "Deploying Code"
-                """
+            	script {
+            		
+            	}
             }
         }
 
