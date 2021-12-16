@@ -7,20 +7,20 @@ pipeline {
     	registryCredentials = 'dockerhub_cred'
     }
     tools{
-    	maven 'maven'
+    	nodejs 'npm'
     }
 
     stages {
         
         stage('Cleanup Workspace') {
             steps {
-                sh "mvn clean"
+                
             }
         }
         
         stage('Compile code') {
             steps {
-                sh 'mvn compile'
+                sh 'npm install'
             }	
         }
 
@@ -29,7 +29,7 @@ pipeline {
                 branch 'test'
             } 
             steps {
-                sh "mvn test"
+                sh "npm test"
             }
         }
         
@@ -38,7 +38,7 @@ pipeline {
                 branch 'main'
             } 
             steps {
-                sh "mvn package"
+                
             }
         }
         
