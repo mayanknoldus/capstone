@@ -1,5 +1,5 @@
 - name: Start Jenkins Service
   service:
     name: jenkins
-    state: stopped
+    state: started
     enabled: yes
