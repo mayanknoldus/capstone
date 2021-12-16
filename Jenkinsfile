@@ -12,11 +12,11 @@ pipeline {
 
     stages {
         
-        stage('Cleanup Workspace') {
-            steps {
+        // stage('Cleanup Workspace') {
+        //     steps {
                 
-            }
-        }
+        //     }
+        // }
         
         stage('Compile code') {
             steps {
@@ -33,14 +33,14 @@ pipeline {
             }
         }
         
-        stage('Packaging') {
-            when {
-                branch 'main'
-            } 
-            steps {
+        // stage('Packaging') {
+        //     when {
+        //         branch 'main'
+        //     } 
+        //     steps {
                 
-            }
-        }
+        //     }
+        // }
         
         stage('Build and Push') {
             when {
