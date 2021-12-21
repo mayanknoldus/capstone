@@ -18,11 +18,11 @@ pipeline {
         //     }
         // }
         
-        stage('Compile code') {
-            steps {
-                sh 'npm install'
-            }	
-        }
+//         stage('Compile code') {
+//             steps {
+//                 sh 'npm install'
+//             }	
+//         }
 
         stage('Testing') {
             when {
