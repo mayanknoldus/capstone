@@ -20,3 +20,26 @@ spec:
             cpu: "500m"
         ports:
           - containerPort: 2000
+
+        env:
+          - name: DB_HOST
+            value: "mysql.default.svc.cluster.local" 
+          - name: DB_USER 
+            value: "root" 
+          - name: DB_PASSWORD
+            value: "password" 
+          - name: DB_NAME
+            value: "user"
+
+      
+
+
+
+
+
+
+
+
+
+
+            

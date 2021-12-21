@@ -19,7 +19,8 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.2",
     "express": "^4.15.2",
-    "mysql": "^2.13.0"
+    "mysql": "^2.13.0",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "request": "^2.81.0",

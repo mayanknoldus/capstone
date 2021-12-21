@@ -4,7 +4,7 @@ WORKDIR /node-app
 
 COPY . ./
 
-RUN npm install
+RUN npm install --save mysql2 && npm install
 
 EXPOSE 2000
 
