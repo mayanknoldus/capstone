@@ -12,17 +12,11 @@ pipeline {
 
     stages {
         
-        // stage('Cleanup Workspace') {
-        //     steps {
-                
-        //     }
-        // }
-        
-//         stage('Compile code') {
-//             steps {
-//                 sh 'npm install'
-//             }	
-//         }
+        stage('Compile code') {
+            steps {
+                sh 'npm install'
+            }	
+        }
 
         stage('Testing') {
             when {
@@ -32,15 +26,6 @@ pipeline {
                 sh "npm test"
             }
         }
-        
-        // stage('Packaging') {
-        //     when {
-        //         branch 'main'
-        //     } 
-        //     steps {
-                
-        //     }
-        // }
         
         stage('Build and Push') {
             when {
